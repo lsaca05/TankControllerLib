@@ -80,32 +80,33 @@ $(function() {
 <div class="line"><a name="l00008"></a><span class="lineno"><a class="line" href="classChiller__TC.html#a50860e13cb1fffabe816bdd48cc357bd">    8</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classChiller__TC.html#a50860e13cb1fffabe816bdd48cc357bd">Chiller_TC::chill</a>() {</div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;  <span class="keywordflow">if</span> (<a class="code" href="classTempControl__TC.html#af57d1b7fce04d07016df00ed50227d68">currentTime</a> - <a class="code" href="classTempControl__TC.html#aaef3d6e8875ecb8b878c7c414cf6ca32">previousTime</a> &gt;= <a class="code" href="classTempControl__TC.html#aa20889a414aa762f9c34084b590e3271">CHILLER_INTERVAL</a>) {</div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;    <a class="code" href="classTempControl__TC.html#aaef3d6e8875ecb8b878c7c414cf6ca32">previousTime</a> = <a class="code" href="classTempControl__TC.html#af57d1b7fce04d07016df00ed50227d68">currentTime</a>;</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    <span class="keywordflow">if</span> (temp &gt;= temp_set + 0.05) {</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;      Serial.println(F(<span class="stringliteral">&quot;chiller on&quot;</span>));</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;      digitalWrite(CHILLER, LOW);</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (temp &lt;= temp_set - 0.05) {</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;      Serial.println(F(<span class="stringliteral">&quot;chiller off&quot;</span>));</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;      digitalWrite(CHILLER, HIGH);</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    }</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;  }</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;}</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
-<div class="line"><a name="l00021"></a><span class="lineno"><a class="line" href="classHeater__TC.html#a61dbf68a742064b98cf15a3970c4fc7c">   21</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classHeater__TC.html#a61dbf68a742064b98cf15a3970c4fc7c">Heater_TC::heat</a>() {</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;  <span class="keywordflow">if</span> (temp &lt;=</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;      temp_set + 0.05) {  <span class="comment">// if the observed temperature is less than or equal the temperature setpoint plus .05 degree</span></div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    Serial.println(F(<span class="stringliteral">&quot;chiller on&quot;</span>));  <span class="comment">// print chiller state to serial</span></div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    digitalWrite(CHILLER, LOW);</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;  } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (temp &gt;= temp_set - 0.05) {  <span class="comment">// see if temperature is greater than or equal to .05 below setpoint</span></div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    Serial.println(F(<span class="stringliteral">&quot;chiller off&quot;</span>));    <span class="comment">// print chiller state to serial</span></div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    digitalWrite(CHILLER, HIGH);</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;  }</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;}</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    <span class="comment">// temp and temp_set may need to be passed in since they&#39;re dependent on GetTemperature</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    <span class="keywordflow">if</span> (temp &gt;= temp_set + 0.05) {</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;      Serial.println(F(<span class="stringliteral">&quot;chiller on&quot;</span>));</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;      digitalWrite(CHILLER, LOW);</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (temp &lt;= temp_set - 0.05) {</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;      Serial.println(F(<span class="stringliteral">&quot;chiller off&quot;</span>));</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;      digitalWrite(CHILLER, HIGH);</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    }</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;  }</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;}</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
+<div class="line"><a name="l00022"></a><span class="lineno"><a class="line" href="classHeater__TC.html#a61dbf68a742064b98cf15a3970c4fc7c">   22</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classHeater__TC.html#a61dbf68a742064b98cf15a3970c4fc7c">Heater_TC::heat</a>() {</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;  <span class="keywordflow">if</span> (temp &lt;=</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;      temp_set + 0.05) {  <span class="comment">// if the observed temperature is less than or equal the temperature setpoint plus .05 degree</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    Serial.println(F(<span class="stringliteral">&quot;chiller on&quot;</span>));  <span class="comment">// print chiller state to serial</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    digitalWrite(CHILLER, LOW);</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;  } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (temp &gt;= temp_set - 0.05) {  <span class="comment">// see if temperature is greater than or equal to .05 below setpoint</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    Serial.println(F(<span class="stringliteral">&quot;chiller off&quot;</span>));    <span class="comment">// print chiller state to serial</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    digitalWrite(CHILLER, HIGH);</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;  }</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
-<div class="ttc" id="aclassTempControl__TC_html_aa20889a414aa762f9c34084b590e3271"><div class="ttname"><a href="classTempControl__TC.html#aa20889a414aa762f9c34084b590e3271">TempControl_TC::CHILLER_INTERVAL</a></div><div class="ttdeci">const unsigned long CHILLER_INTERVAL</div><div class="ttdef"><b>Definition:</b> <a href="TempControl__TC_8h_source.html#l00006">TempControl_TC.h:6</a></div></div>
+<div class="ttc" id="aclassTempControl__TC_html_aa20889a414aa762f9c34084b590e3271"><div class="ttname"><a href="classTempControl__TC.html#aa20889a414aa762f9c34084b590e3271">TempControl_TC::CHILLER_INTERVAL</a></div><div class="ttdeci">const unsigned long CHILLER_INTERVAL</div><div class="ttdef"><b>Definition:</b> <a href="TempControl__TC_8h_source.html#l00011">TempControl_TC.h:11</a></div></div>
 <div class="ttc" id="aclassChiller__TC_html_a50860e13cb1fffabe816bdd48cc357bd"><div class="ttname"><a href="classChiller__TC.html#a50860e13cb1fffabe816bdd48cc357bd">Chiller_TC::chill</a></div><div class="ttdeci">void chill()</div><div class="ttdef"><b>Definition:</b> <a href="TempControl__TC_8cpp_source.html#l00008">TempControl_TC.cpp:8</a></div></div>
-<div class="ttc" id="aclassTempControl__TC_html_af57d1b7fce04d07016df00ed50227d68"><div class="ttname"><a href="classTempControl__TC.html#af57d1b7fce04d07016df00ed50227d68">TempControl_TC::currentTime</a></div><div class="ttdeci">unsigned long currentTime</div><div class="ttdef"><b>Definition:</b> <a href="TempControl__TC_8h_source.html#l00008">TempControl_TC.h:8</a></div></div>
-<div class="ttc" id="aclassHeater__TC_html_a61dbf68a742064b98cf15a3970c4fc7c"><div class="ttname"><a href="classHeater__TC.html#a61dbf68a742064b98cf15a3970c4fc7c">Heater_TC::heat</a></div><div class="ttdeci">void heat()</div><div class="ttdef"><b>Definition:</b> <a href="TempControl__TC_8cpp_source.html#l00021">TempControl_TC.cpp:21</a></div></div>
-<div class="ttc" id="aclassTempControl__TC_html_aaef3d6e8875ecb8b878c7c414cf6ca32"><div class="ttname"><a href="classTempControl__TC.html#aaef3d6e8875ecb8b878c7c414cf6ca32">TempControl_TC::previousTime</a></div><div class="ttdeci">unsigned long previousTime</div><div class="ttdef"><b>Definition:</b> <a href="TempControl__TC_8h_source.html#l00009">TempControl_TC.h:9</a></div></div>
+<div class="ttc" id="aclassTempControl__TC_html_af57d1b7fce04d07016df00ed50227d68"><div class="ttname"><a href="classTempControl__TC.html#af57d1b7fce04d07016df00ed50227d68">TempControl_TC::currentTime</a></div><div class="ttdeci">unsigned long currentTime</div><div class="ttdef"><b>Definition:</b> <a href="TempControl__TC_8h_source.html#l00013">TempControl_TC.h:13</a></div></div>
+<div class="ttc" id="aclassHeater__TC_html_a61dbf68a742064b98cf15a3970c4fc7c"><div class="ttname"><a href="classHeater__TC.html#a61dbf68a742064b98cf15a3970c4fc7c">Heater_TC::heat</a></div><div class="ttdeci">void heat()</div><div class="ttdef"><b>Definition:</b> <a href="TempControl__TC_8cpp_source.html#l00022">TempControl_TC.cpp:22</a></div></div>
+<div class="ttc" id="aclassTempControl__TC_html_aaef3d6e8875ecb8b878c7c414cf6ca32"><div class="ttname"><a href="classTempControl__TC.html#aaef3d6e8875ecb8b878c7c414cf6ca32">TempControl_TC::previousTime</a></div><div class="ttdeci">unsigned long previousTime</div><div class="ttdef"><b>Definition:</b> <a href="TempControl__TC_8h_source.html#l00014">TempControl_TC.h:14</a></div></div>
 <div class="ttc" id="aclassTempControl__TC_html_a53c4f22501af12ac9524e1b30e77fa49"><div class="ttname"><a href="classTempControl__TC.html#a53c4f22501af12ac9524e1b30e77fa49">TempControl_TC::updateCtrl</a></div><div class="ttdeci">virtual void updateCtrl()</div><div class="ttdef"><b>Definition:</b> <a href="TempControl__TC_8cpp_source.html#l00004">TempControl_TC.cpp:4</a></div></div>
 <div class="ttc" id="aTempControl__TC_8h_html"><div class="ttname"><a href="TempControl__TC_8h.html">TempControl_TC.h</a></div></div>
 <!-- start footer part -->

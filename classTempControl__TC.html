@@ -89,8 +89,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a534722b1375a29ee1f05d973ac5d0e0d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab0add05eef058e6f65956514940e0d70"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTempControl__TC.html#ab0add05eef058e6f65956514940e0d70">setTempTarget</a> ()</td></tr>
 <tr class="separator:ab0add05eef058e6f65956514940e0d70"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4cf24530cdbea7e997a373612215f997"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTempControl__TC.html#a4cf24530cdbea7e997a373612215f997">getTempTarget</a> ()</td></tr>
-<tr class="separator:a4cf24530cdbea7e997a373612215f997"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a44175535e9b28a0613cc5176d813e28a"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTempControl__TC.html#a44175535e9b28a0613cc5176d813e28a">getTempTarget</a> ()</td></tr>
+<tr class="separator:a44175535e9b28a0613cc5176d813e28a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a53c4f22501af12ac9524e1b30e77fa49"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTempControl__TC.html#a53c4f22501af12ac9524e1b30e77fa49">updateCtrl</a> ()</td></tr>
 <tr class="separator:a53c4f22501af12ac9524e1b30e77fa49"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
@@ -98,7 +98,7 @@ Public Member Functions</h2></td></tr>
 Private Attributes</h2></td></tr>
 <tr class="memitem:a86f14417c0f2fc597c298c63ea232305"><td class="memItemLeft" align="right" valign="top">const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTempControl__TC.html#a86f14417c0f2fc597c298c63ea232305">CHILLER_PIN</a> = 47</td></tr>
 <tr class="separator:a86f14417c0f2fc597c298c63ea232305"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa20889a414aa762f9c34084b590e3271"><td class="memItemLeft" align="right" valign="top">const unsigned long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTempControl__TC.html#aa20889a414aa762f9c34084b590e3271">CHILLER_INTERVAL</a> = 30 * SECOND_IN_MILLIS</td></tr>
+<tr class="memitem:aa20889a414aa762f9c34084b590e3271"><td class="memItemLeft" align="right" valign="top">const unsigned long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTempControl__TC.html#aa20889a414aa762f9c34084b590e3271">CHILLER_INTERVAL</a> = 30 * 1000UL</td></tr>
 <tr class="separator:aa20889a414aa762f9c34084b590e3271"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af57d1b7fce04d07016df00ed50227d68"><td class="memItemLeft" align="right" valign="top">unsigned long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTempControl__TC.html#af57d1b7fce04d07016df00ed50227d68">currentTime</a> = millis()</td></tr>
 <tr class="separator:af57d1b7fce04d07016df00ed50227d68"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -109,7 +109,7 @@ Private Attributes</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock">
-<p class="definition">Definition at line <a class="el" href="TempControl__TC_8h_source.html#l00003">3</a> of file <a class="el" href="TempControl__TC_8h_source.html">TempControl_TC.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="TempControl__TC_8h_source.html#l00008">8</a> of file <a class="el" href="TempControl__TC_8h_source.html">TempControl_TC.h</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a534722b1375a29ee1f05d973ac5d0e0d"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a534722b1375a29ee1f05d973ac5d0e0d">&#9670;&nbsp;</a></span>TempControl_TC()</h2>
@@ -134,27 +134,40 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="TempControl__TC_8h_source.html#l00014">14</a> of file <a class="el" href="TempControl__TC_8h_source.html">TempControl_TC.h</a>.</p>
-<div class="fragment"><div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;                   {</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;  }</div>
+<p class="definition">Definition at line <a class="el" href="TempControl__TC_8h_source.html#l00018">18</a> of file <a class="el" href="TempControl__TC_8h_source.html">TempControl_TC.h</a>.</p>
+<div class="fragment"><div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;                     {</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    }</div>
 </div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="a4cf24530cdbea7e997a373612215f997"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4cf24530cdbea7e997a373612215f997">&#9670;&nbsp;</a></span>getTempTarget()</h2>
+<a id="a44175535e9b28a0613cc5176d813e28a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a44175535e9b28a0613cc5176d813e28a">&#9670;&nbsp;</a></span>getTempTarget()</h2>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void TempControl_TC::getTempTarget </td>
+          <td class="memname">double TempControl_TC::getTempTarget </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="TempControl__TC_8h_source.html#l00022">22</a> of file <a class="el" href="TempControl__TC_8h_source.html">TempControl_TC.h</a>.</p>
+<div class="fragment"><div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;{ <span class="keywordflow">return</span> <a class="code" href="classTempControl__TC.html#a9fba08ed4ce3f1cb540bbadc698bf3b2">tempTarget</a>; }</div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="TempControl__TC_8h_source.html#l00015">tempTarget</a>.</p>
 
 </div>
 </div>
@@ -216,7 +229,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">const unsigned long TempControl_TC::CHILLER_INTERVAL = 30 * SECOND_IN_MILLIS</td>
+          <td class="memname">const unsigned long TempControl_TC::CHILLER_INTERVAL = 30 * 1000UL</td>
         </tr>
       </table>
   </td>
@@ -226,7 +239,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="TempControl__TC_8h_source.html#l00006">6</a> of file <a class="el" href="TempControl__TC_8h_source.html">TempControl_TC.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="TempControl__TC_8h_source.html#l00011">11</a> of file <a class="el" href="TempControl__TC_8h_source.html">TempControl_TC.h</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="TempControl__TC_8cpp_source.html#l00008">Chiller_TC::chill()</a>.</p>
 
@@ -252,7 +265,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="TempControl__TC_8h_source.html#l00005">5</a> of file <a class="el" href="TempControl__TC_8h_source.html">TempControl_TC.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="TempControl__TC_8h_source.html#l00010">10</a> of file <a class="el" href="TempControl__TC_8h_source.html">TempControl_TC.h</a>.</p>
 
 </div>
 </div>
@@ -276,7 +289,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="TempControl__TC_8h_source.html#l00008">8</a> of file <a class="el" href="TempControl__TC_8h_source.html">TempControl_TC.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="TempControl__TC_8h_source.html#l00013">13</a> of file <a class="el" href="TempControl__TC_8h_source.html">TempControl_TC.h</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="TempControl__TC_8cpp_source.html#l00008">Chiller_TC::chill()</a>.</p>
 
@@ -302,7 +315,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="TempControl__TC_8h_source.html#l00009">9</a> of file <a class="el" href="TempControl__TC_8h_source.html">TempControl_TC.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="TempControl__TC_8h_source.html#l00014">14</a> of file <a class="el" href="TempControl__TC_8h_source.html">TempControl_TC.h</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="TempControl__TC_8cpp_source.html#l00008">Chiller_TC::chill()</a>.</p>
 
@@ -328,7 +341,9 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="TempControl__TC_8h_source.html#l00010">10</a> of file <a class="el" href="TempControl__TC_8h_source.html">TempControl_TC.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="TempControl__TC_8h_source.html#l00015">15</a> of file <a class="el" href="TempControl__TC_8h_source.html">TempControl_TC.h</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="TempControl__TC_8h_source.html#l00022">getTempTarget()</a>.</p>
 
 </div>
 </div>
@@ -337,6 +352,7 @@ Private Attributes</h2></td></tr>
 <li>src/Devices/<a class="el" href="TempControl__TC_8cpp_source.html">TempControl_TC.cpp</a></li>
 </ul>
 </div><!-- contents -->
+<div class="ttc" id="aclassTempControl__TC_html_a9fba08ed4ce3f1cb540bbadc698bf3b2"><div class="ttname"><a href="classTempControl__TC.html#a9fba08ed4ce3f1cb540bbadc698bf3b2">TempControl_TC::tempTarget</a></div><div class="ttdeci">double tempTarget</div><div class="ttdef"><b>Definition:</b> <a href="TempControl__TC_8h_source.html#l00015">TempControl_TC.h:15</a></div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by&#160;<a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.8.20

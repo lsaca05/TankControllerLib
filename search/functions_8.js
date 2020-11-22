@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['observername_135',['observerName',['../classBitCollector.html#a021d2f8c40a47e1aa862195cde124b01',1,'BitCollector']]],
-  ['onbit_136',['onBit',['../classBitCollector.html#a273c7fdd2087ac8ab6bb6931cb06ba9e',1,'BitCollector']]]
+  ['nobubble_137',['noBubble',['../classpHControl__TC.html#a889e9b16d2ba9a22b3a44c161efd04c8',1,'pHControl_TC']]]
 ];

@@ -99,14 +99,14 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a534722b1375a29ee1f05d973ac5d0e0d inherit pub_methods_classTempControl__TC"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab0add05eef058e6f65956514940e0d70 inherit pub_methods_classTempControl__TC"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTempControl__TC.html#ab0add05eef058e6f65956514940e0d70">setTempTarget</a> ()</td></tr>
 <tr class="separator:ab0add05eef058e6f65956514940e0d70 inherit pub_methods_classTempControl__TC"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4cf24530cdbea7e997a373612215f997 inherit pub_methods_classTempControl__TC"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTempControl__TC.html#a4cf24530cdbea7e997a373612215f997">getTempTarget</a> ()</td></tr>
-<tr class="separator:a4cf24530cdbea7e997a373612215f997 inherit pub_methods_classTempControl__TC"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a44175535e9b28a0613cc5176d813e28a inherit pub_methods_classTempControl__TC"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTempControl__TC.html#a44175535e9b28a0613cc5176d813e28a">getTempTarget</a> ()</td></tr>
+<tr class="separator:a44175535e9b28a0613cc5176d813e28a inherit pub_methods_classTempControl__TC"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a53c4f22501af12ac9524e1b30e77fa49 inherit pub_methods_classTempControl__TC"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTempControl__TC.html#a53c4f22501af12ac9524e1b30e77fa49">updateCtrl</a> ()</td></tr>
 <tr class="separator:a53c4f22501af12ac9524e1b30e77fa49 inherit pub_methods_classTempControl__TC"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock">
-<p class="definition">Definition at line <a class="el" href="TempControl__TC_8h_source.html#l00030">30</a> of file <a class="el" href="TempControl__TC_8h_source.html">TempControl_TC.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="TempControl__TC_8h_source.html#l00032">32</a> of file <a class="el" href="TempControl__TC_8h_source.html">TempControl_TC.h</a>.</p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="a50860e13cb1fffabe816bdd48cc357bd"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a50860e13cb1fffabe816bdd48cc357bd">&#9670;&nbsp;</a></span>chill()</h2>
@@ -127,17 +127,18 @@ Public Member Functions</h2></td></tr>
 <div class="fragment"><div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;                       {</div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;  <span class="keywordflow">if</span> (<a class="code" href="classTempControl__TC.html#af57d1b7fce04d07016df00ed50227d68">currentTime</a> - <a class="code" href="classTempControl__TC.html#aaef3d6e8875ecb8b878c7c414cf6ca32">previousTime</a> &gt;= <a class="code" href="classTempControl__TC.html#aa20889a414aa762f9c34084b590e3271">CHILLER_INTERVAL</a>) {</div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;    <a class="code" href="classTempControl__TC.html#aaef3d6e8875ecb8b878c7c414cf6ca32">previousTime</a> = <a class="code" href="classTempControl__TC.html#af57d1b7fce04d07016df00ed50227d68">currentTime</a>;</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    <span class="keywordflow">if</span> (temp &gt;= temp_set + 0.05) {</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;      Serial.println(F(<span class="stringliteral">&quot;chiller on&quot;</span>));</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;      digitalWrite(CHILLER, LOW);</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (temp &lt;= temp_set - 0.05) {</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;      Serial.println(F(<span class="stringliteral">&quot;chiller off&quot;</span>));</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;      digitalWrite(CHILLER, HIGH);</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    }</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;  }</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;}</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    <span class="comment">// temp and temp_set may need to be passed in since they&#39;re dependent on GetTemperature</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    <span class="keywordflow">if</span> (temp &gt;= temp_set + 0.05) {</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;      Serial.println(F(<span class="stringliteral">&quot;chiller on&quot;</span>));</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;      digitalWrite(CHILLER, LOW);</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (temp &lt;= temp_set - 0.05) {</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;      Serial.println(F(<span class="stringliteral">&quot;chiller off&quot;</span>));</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;      digitalWrite(CHILLER, HIGH);</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    }</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;  }</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;}</div>
 </div><!-- fragment -->
-<p class="reference">References <a class="el" href="TempControl__TC_8h_source.html#l00006">TempControl_TC::CHILLER_INTERVAL</a>, <a class="el" href="TempControl__TC_8h_source.html#l00008">TempControl_TC::currentTime</a>, and <a class="el" href="TempControl__TC_8h_source.html#l00009">TempControl_TC::previousTime</a>.</p>
+<p class="reference">References <a class="el" href="TempControl__TC_8h_source.html#l00011">TempControl_TC::CHILLER_INTERVAL</a>, <a class="el" href="TempControl__TC_8h_source.html#l00013">TempControl_TC::currentTime</a>, and <a class="el" href="TempControl__TC_8h_source.html#l00014">TempControl_TC::previousTime</a>.</p>
 
 </div>
 </div>
@@ -146,9 +147,9 @@ Public Member Functions</h2></td></tr>
 <li>src/Devices/<a class="el" href="TempControl__TC_8cpp_source.html">TempControl_TC.cpp</a></li>
 </ul>
 </div><!-- contents -->
-<div class="ttc" id="aclassTempControl__TC_html_aa20889a414aa762f9c34084b590e3271"><div class="ttname"><a href="classTempControl__TC.html#aa20889a414aa762f9c34084b590e3271">TempControl_TC::CHILLER_INTERVAL</a></div><div class="ttdeci">const unsigned long CHILLER_INTERVAL</div><div class="ttdef"><b>Definition:</b> <a href="TempControl__TC_8h_source.html#l00006">TempControl_TC.h:6</a></div></div>
-<div class="ttc" id="aclassTempControl__TC_html_af57d1b7fce04d07016df00ed50227d68"><div class="ttname"><a href="classTempControl__TC.html#af57d1b7fce04d07016df00ed50227d68">TempControl_TC::currentTime</a></div><div class="ttdeci">unsigned long currentTime</div><div class="ttdef"><b>Definition:</b> <a href="TempControl__TC_8h_source.html#l00008">TempControl_TC.h:8</a></div></div>
-<div class="ttc" id="aclassTempControl__TC_html_aaef3d6e8875ecb8b878c7c414cf6ca32"><div class="ttname"><a href="classTempControl__TC.html#aaef3d6e8875ecb8b878c7c414cf6ca32">TempControl_TC::previousTime</a></div><div class="ttdeci">unsigned long previousTime</div><div class="ttdef"><b>Definition:</b> <a href="TempControl__TC_8h_source.html#l00009">TempControl_TC.h:9</a></div></div>
+<div class="ttc" id="aclassTempControl__TC_html_aa20889a414aa762f9c34084b590e3271"><div class="ttname"><a href="classTempControl__TC.html#aa20889a414aa762f9c34084b590e3271">TempControl_TC::CHILLER_INTERVAL</a></div><div class="ttdeci">const unsigned long CHILLER_INTERVAL</div><div class="ttdef"><b>Definition:</b> <a href="TempControl__TC_8h_source.html#l00011">TempControl_TC.h:11</a></div></div>
+<div class="ttc" id="aclassTempControl__TC_html_af57d1b7fce04d07016df00ed50227d68"><div class="ttname"><a href="classTempControl__TC.html#af57d1b7fce04d07016df00ed50227d68">TempControl_TC::currentTime</a></div><div class="ttdeci">unsigned long currentTime</div><div class="ttdef"><b>Definition:</b> <a href="TempControl__TC_8h_source.html#l00013">TempControl_TC.h:13</a></div></div>
+<div class="ttc" id="aclassTempControl__TC_html_aaef3d6e8875ecb8b878c7c414cf6ca32"><div class="ttname"><a href="classTempControl__TC.html#aaef3d6e8875ecb8b878c7c414cf6ca32">TempControl_TC::previousTime</a></div><div class="ttdeci">unsigned long previousTime</div><div class="ttdef"><b>Definition:</b> <a href="TempControl__TC_8h_source.html#l00014">TempControl_TC.h:14</a></div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by&#160;<a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.8.20

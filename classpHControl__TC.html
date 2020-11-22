@@ -79,11 +79,15 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a1cf76b74d2c9094eaa6e1b3c8de8ab1c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a889e9b16d2ba9a22b3a44c161efd04c8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpHControl__TC.html#a889e9b16d2ba9a22b3a44c161efd04c8">noBubble</a> ()</td></tr>
 <tr class="separator:a889e9b16d2ba9a22b3a44c161efd04c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a942336230656914b2eea3896c6f5c271"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpHControl__TC.html#a942336230656914b2eea3896c6f5c271">driveOutput</a> ()</td></tr>
+<tr class="separator:a942336230656914b2eea3896c6f5c271"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
 <tr class="memitem:a699f8d969dad839094a87ba08903ee84"><td class="memItemLeft" align="right" valign="top">const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpHControl__TC.html#a699f8d969dad839094a87ba08903ee84">CO2_REG_PIN</a> = 49</td></tr>
 <tr class="separator:a699f8d969dad839094a87ba08903ee84"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac971d2e66874c3040f25128ba3ee7aa0"><td class="memItemLeft" align="right" valign="top">long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpHControl__TC.html#ac971d2e66874c3040f25128ba3ee7aa0">window_start_time</a> = millis()</td></tr>
+<tr class="separator:ac971d2e66874c3040f25128ba3ee7aa0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock">
@@ -94,6 +98,9 @@ Private Attributes</h2></td></tr>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">void pHControl_TC::bubble </td>
@@ -102,7 +109,54 @@ Private Attributes</h2></td></tr>
           <td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="pHControl__TC_8h_source.html#l00009">9</a> of file <a class="el" href="pHControl__TC_8h_source.html">pHControl_TC.h</a>.</p>
+<div class="fragment"><div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;{ digitalWrite(<a class="code" href="classpHControl__TC.html#a699f8d969dad839094a87ba08903ee84">CO2_REG_PIN</a>, LOW); }</div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="pHControl__TC_8h_source.html#l00004">CO2_REG_PIN</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="pHControl__TC_8cpp_source.html#l00004">driveOutput()</a>.</p>
+
+</div>
+</div>
+<a id="a942336230656914b2eea3896c6f5c271"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a942336230656914b2eea3896c6f5c271">&#9670;&nbsp;</a></span>driveOutput()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void pHControl_TC::driveOutput </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="pHControl__TC_8cpp_source.html#l00004">4</a> of file <a class="el" href="pHControl__TC_8cpp_source.html">pHControl_TC.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;                               {</div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;    <span class="keywordtype">long</span> now = millis();</div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;    <span class="comment">// Set the output</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;    <span class="comment">// &quot;on time&quot; is proportional to the PID output</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;    <span class="keywordflow">if</span> (now - <a class="code" href="classpHControl__TC.html#ac971d2e66874c3040f25128ba3ee7aa0">window_start_time</a> &gt; WINDOW_SIZE) {  <span class="comment">// time to shift the Relay Window</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;        <a class="code" href="classpHControl__TC.html#ac971d2e66874c3040f25128ba3ee7aa0">window_start_time</a> += WINDOW_SIZE;</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;    }</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    <span class="comment">// on_time may need to be passed in</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    <span class="keywordflow">if</span> ((on_time &gt; 100) &amp;&amp; (one_time &gt; (now - <a class="code" href="classpHControl__TC.html#ac971d2e66874c3040f25128ba3ee7aa0">window_start_time</a>))) {</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;        <a class="code" href="classpHControl__TC.html#a1cf76b74d2c9094eaa6e1b3c8de8ab1c">bubble</a>();</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;        <a class="code" href="classpHControl__TC.html#a889e9b16d2ba9a22b3a44c161efd04c8">noBubble</a>();</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    }</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;}</div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="pHControl__TC_8h_source.html#l00009">bubble()</a>, <a class="el" href="pHControl__TC_8h_source.html#l00011">noBubble()</a>, and <a class="el" href="pHControl__TC_8h_source.html#l00005">window_start_time</a>.</p>
 
 </div>
 </div>
@@ -111,6 +165,9 @@ Private Attributes</h2></td></tr>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">void pHControl_TC::noBubble </td>
@@ -119,7 +176,19 @@ Private Attributes</h2></td></tr>
           <td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="pHControl__TC_8h_source.html#l00011">11</a> of file <a class="el" href="pHControl__TC_8h_source.html">pHControl_TC.h</a>.</p>
+<div class="fragment"><div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;{ digitalWrite(<a class="code" href="classpHControl__TC.html#a699f8d969dad839094a87ba08903ee84">CO2_REG_PIN</a>, HIGH); }</div>
+</div><!-- fragment -->
+<p class="reference">References <a class="el" href="pHControl__TC_8h_source.html#l00004">CO2_REG_PIN</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="pHControl__TC_8cpp_source.html#l00004">driveOutput()</a>.</p>
 
 </div>
 </div>
@@ -146,12 +215,45 @@ Private Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="pHControl__TC_8h_source.html#l00004">4</a> of file <a class="el" href="pHControl__TC_8h_source.html">pHControl_TC.h</a>.</p>
 
+<p class="reference">Referenced by <a class="el" href="pHControl__TC_8h_source.html#l00009">bubble()</a>, and <a class="el" href="pHControl__TC_8h_source.html#l00011">noBubble()</a>.</p>
+
 </div>
 </div>
-<hr/>The documentation for this class was generated from the following file:<ul>
+<a id="ac971d2e66874c3040f25128ba3ee7aa0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac971d2e66874c3040f25128ba3ee7aa0">&#9670;&nbsp;</a></span>window_start_time</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">long pHControl_TC::window_start_time = millis()</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="pHControl__TC_8h_source.html#l00005">5</a> of file <a class="el" href="pHControl__TC_8h_source.html">pHControl_TC.h</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="pHControl__TC_8cpp_source.html#l00004">driveOutput()</a>.</p>
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following files:<ul>
 <li>src/Devices/<a class="el" href="pHControl__TC_8h_source.html">pHControl_TC.h</a></li>
+<li>src/Devices/<a class="el" href="pHControl__TC_8cpp_source.html">pHControl_TC.cpp</a></li>
 </ul>
 </div><!-- contents -->
+<div class="ttc" id="aclasspHControl__TC_html_a889e9b16d2ba9a22b3a44c161efd04c8"><div class="ttname"><a href="classpHControl__TC.html#a889e9b16d2ba9a22b3a44c161efd04c8">pHControl_TC::noBubble</a></div><div class="ttdeci">void noBubble()</div><div class="ttdef"><b>Definition:</b> <a href="pHControl__TC_8h_source.html#l00011">pHControl_TC.h:11</a></div></div>
+<div class="ttc" id="aclasspHControl__TC_html_a1cf76b74d2c9094eaa6e1b3c8de8ab1c"><div class="ttname"><a href="classpHControl__TC.html#a1cf76b74d2c9094eaa6e1b3c8de8ab1c">pHControl_TC::bubble</a></div><div class="ttdeci">void bubble()</div><div class="ttdef"><b>Definition:</b> <a href="pHControl__TC_8h_source.html#l00009">pHControl_TC.h:9</a></div></div>
+<div class="ttc" id="aclasspHControl__TC_html_a699f8d969dad839094a87ba08903ee84"><div class="ttname"><a href="classpHControl__TC.html#a699f8d969dad839094a87ba08903ee84">pHControl_TC::CO2_REG_PIN</a></div><div class="ttdeci">const int CO2_REG_PIN</div><div class="ttdef"><b>Definition:</b> <a href="pHControl__TC_8h_source.html#l00004">pHControl_TC.h:4</a></div></div>
+<div class="ttc" id="aclasspHControl__TC_html_ac971d2e66874c3040f25128ba3ee7aa0"><div class="ttname"><a href="classpHControl__TC.html#ac971d2e66874c3040f25128ba3ee7aa0">pHControl_TC::window_start_time</a></div><div class="ttdeci">long window_start_time</div><div class="ttdef"><b>Definition:</b> <a href="pHControl__TC_8h_source.html#l00005">pHControl_TC.h:5</a></div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by&#160;<a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.8.20
